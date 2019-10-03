@@ -2,12 +2,12 @@
 
 class ArticleApiController {
 	/**
-	 * @routeType POST
-	 * @routePath /api/i/article
-	 * @routeBody {"title": "String", "subtitle":"String", "content": "String"}
-	 * @routeKey Create Article
-	 * @routeDescription Create a new article
-	 * @routeResponse Article object
+	 * @apiType POST
+	 * @apiPath /api/i/article
+	 * @apiBody {"title": "String", "subtitle":"String", "content": "String"}
+	 * @apiKey Create Article
+	 * @apiDescription Create a new article
+	 * @apiResponse Article object
 	 */
 	createArticle(req, res, next) {
 		// 1. Insert the new article into db
@@ -17,12 +17,11 @@ class ArticleApiController {
 	}
 
 	/**
-	 * @routeType PUT
-	 * @routePath /api/i/article/:id
-	 * @routeBody {"title": "String", "subtitle":"String", "content": "String"}
-	 * @routeKey Create Article
-	 * @routeDescription Create a new article
-	 * @routeResponse Article object
+	 * @apiPath PUT /api/i/article/:id
+	 * @apiBody {"title": "String", "subtitle":"String", "content": "String"}
+	 * @apiKey Create Article
+	 * @apiDescription Create a new article
+	 * @apiResponse Article object
 	 */
 	updateArticle(req, res, next) {
 		// 1. Update the article in the db
@@ -32,11 +31,11 @@ class ArticleApiController {
 	}
 
 	/**
-	 * @routeType GET
-	 * @routePath /api/i/article/:id
-	 * @routeKey Get Article
-	 * @routeDescription Get an article
-	 * @routeResponse Article object
+	 * @apiType GET
+	 * @apiPath /api/i/article/:id
+	 * @apiKey Get Article
+	 * @apiDescription Get an article
+	 * @apiResponse Article object
 	 */
 	getArticle(req, res, next) {
 		// 1. Insert the user into db
@@ -46,11 +45,11 @@ class ArticleApiController {
 	}
 
 	/**
-	 * @routeType DELETE
-	 * @routePath /api/i/article/:id
-	 * @routeKey Delete Article
-	 * @routeDescription Delet an article
-	 * @routeResponse Boolean
+	 * @apiType DELETE
+	 * @apiPath /api/i/article/:id
+	 * @apiKey Delete Article
+	 * @apiDescription Delet an article
+	 * @apiResponse Boolean
 	 */
 	deleteArticle(req, res, next) {
 		// 1. Delete the article by its id

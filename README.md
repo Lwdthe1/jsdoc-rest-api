@@ -13,12 +13,12 @@ You must have files with the appropriate JsDoc annonations on functions. Example
 ```
 class ArticleApiController {
 	/**
-		* @routeType PUT
-		* @routePath /api/i/article/:id
-		* @routeBody {"title": "String", "subtitle":"String", "content": "String"}
-		* @routeKey Create Article
-		* @routeDescription Create a new article
-		* @routeResponse Article object
+		* @apiType PUT
+		* @apiPath /api/i/article/:id
+		* @apiBody {"title": "String", "subtitle":"String", "content": "String"}
+		* @apiKey Create Article
+		* @apiDescription Create a new article
+		* @apiResponse Article object
 		*/
 	updateArticle(req, res, next) {
 		// 1. Update the article in the db
@@ -82,37 +82,37 @@ Expected result:
 	</thead>
 	<tbody>
 		<tr>
-			<td>@routeType</td>
+			<td>@apiType</td>
 			<td>The HTTP verb for the api route</td>
 			<td>`GET`, `POST`, `PUT`, `DELETE`</td>
 			<td>Required</td>
 		</tr>
 		<tr>
-			<td>@routePath</td>
+			<td>@apiPath</td>
 			<td>The HTTP endpoint for the api route.</td>
 			<td>`String`</td>
 			<td>Required</td>
 		</tr>
 		<tr>
-			<td>@routeBody</td>
+			<td>@apiBody</td>
 			<td>The HTTP expected body data for the api route.</td>
 			<td>`String|JSON`</td>
 			<td>Optional</td>
 		</tr>
 		<tr>
-			<td>@routeKey</td>
+			<td>@apiKey</td>
 			<td>A key by which this route may be identified by consumers of your api.</td>
 			<td>`String`</td>
 			<td>Optional</td>
 		</tr>
 		<tr>
-			<td>@routeDescription</td>
+			<td>@apiDescription</td>
 			<td>A description of this route for consumers of your api.</td>
 			<td>`String`</td>
 			<td>Optional</td>
 		</tr>
 		<tr>
-			<td>@routeResponse</td>
+			<td>@apiResponse</td>
 			<td>The type of the response that the api client should expect for this route.</td>
 			<td>`String`</td>
 			<td>Optional</td>
@@ -246,11 +246,11 @@ Let's return to our `ArticleApiController` class (which is hosted in the file `s
 class ArticleApiController {
 
     /**
-    	* @routeType GET
-    	* @routePath /api/i/article/:id
-    	* @routeKey Get Article
-    	* @routeDescription Get an article
-    	* @routeResponse Article object
+    	* @apiType GET
+    	* @apiPath /api/i/article/:id
+    	* @apiKey Get Article
+    	* @apiDescription Get an article
+    	* @apiResponse Article object
     	*/
     getArticle(req, res, next) {
     	// 1. Insert the user into db
@@ -260,12 +260,12 @@ class ArticleApiController {
     }
 
     \**
-    	* @routeType POST
-    	* @routePath /api/i/article
-    	* @routeBody {"title": "String", "subtitle":"String", "content": "String"}
-    	* @routeKey Create Article
-    	* @routeDescription Create a new article
-    	* @routeResponse Article object
+    	* @apiType POST
+    	* @apiPath /api/i/article
+    	* @apiBody {"title": "String", "subtitle":"String", "content": "String"}
+    	* @apiKey Create Article
+    	* @apiDescription Create a new article
+    	* @apiResponse Article object
     	*/
     createArticle(req, res, next) {
     	// 1. Insert the new article into db
