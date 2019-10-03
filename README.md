@@ -38,6 +38,8 @@ const jsdocRestApi = require('jsdoc-rest-api')
 
 // Assuming you've defined all of your API controllers in `server/api/**`
 const allApiEndpointsGrouped = jsdocRestApi.generateRoutes({ source: "server/api/**/*Controller.js" })
+
+
 /**
 Expected result:
 [
