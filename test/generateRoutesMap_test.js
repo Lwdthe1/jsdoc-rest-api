@@ -9,7 +9,7 @@ describe("#generateRoutes()", function() {
 		const expectedResult = [
 			{
 				fileName: "ArticleApiController.js",
-				fileAbsolutePath: "/test/testFiles/api/ArticleApiController.js",
+				fileAbsolutePath: "/examples/generateRoutesMap/server/api/ArticleApiController.js",
 				routes: {
 					GET: {
 						GET_ARTICLE: {
@@ -63,7 +63,7 @@ describe("#generateRoutes()", function() {
 			},
 			{
 				fileName: "DiscussionApiController.js",
-				fileAbsolutePath: "/test/testFiles/api/DiscussionApiController.js",
+				fileAbsolutePath: "/examples/generateRoutesMap/server/api/DiscussionApiController.js",
 				routes: {
 					GET: {
 						GET_DISCUSSION: {
@@ -118,7 +118,7 @@ describe("#generateRoutes()", function() {
 		];
 
 		assert.deepEqual(
-			generateRoutes({ source: "test/testFiles/api/**/*Controller.js" }),
+			generateRoutes({ source: "examples/generateRoutesMap/server/api/**/*Controller.js" }),
 			expectedResult
 		);
 	});
