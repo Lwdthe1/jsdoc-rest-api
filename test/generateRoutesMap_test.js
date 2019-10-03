@@ -12,13 +12,13 @@ describe("#generateRoutes()", function() {
 				fileAbsolutePath: "/test/testFiles/api/ArticleApiController.js",
 				routes: {
 					GET: {
-						UPDATE_ARTICLE: {
+						GET_ARTICLE: {
 							type: "GET",
 							path: "/api/i/article/:id",
 							key: "Get Article",
 							description: "Get an article",
 							respsonseType: "Article object",
-							ctrl: "updateArticle",
+							ctrl: "getArticle",
 							ctrlClass: "ArticleApiController"
 						}
 					},
@@ -66,13 +66,13 @@ describe("#generateRoutes()", function() {
 				fileAbsolutePath: "/test/testFiles/api/DiscussionApiController.js",
 				routes: {
 					GET: {
-						UPDATE_DISCUSSION: {
+						GET_DISCUSSION: {
 							type: "GET",
 							path: "/api/i/discussion/:id",
 							key: "Get Discussion",
 							description: "Get an discussion",
 							respsonseType: "Discussion object",
-							ctrl: "updateDiscussion",
+							ctrl: "getDiscussion",
 							ctrlClass: "DiscussionApiController"
 						}
 					},

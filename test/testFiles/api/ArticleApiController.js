@@ -38,7 +38,7 @@ class ArticleApiController {
 	 * @routeDescription Get an article
 	 * @routeResponse Article object
 	 */
-	updateArticle(req, res, next) {
+	getArticle(req, res, next) {
 		// 1. Insert the user into db
 		const dbArticle = this.articleDbDriver.getById(req.params.id);
 		// 2. Respond with the article

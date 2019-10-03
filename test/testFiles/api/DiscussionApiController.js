@@ -1,6 +1,6 @@
 "use strict";
 
-class DiscussionApiController {
+const DiscussionApiController = {
 	/**
 	 * @routeType POST
 	 * @routePath /api/i/discussion
@@ -14,7 +14,7 @@ class DiscussionApiController {
 		const newDbDiscussion = this.discussionDbDriver.insert(req.body);
 		// 2. Respond with the new discussion
 		res.status(201).send(newDbDiscussion);
-	}
+	},
 
 	/**
 	 * @routeType PUT
@@ -29,7 +29,7 @@ class DiscussionApiController {
 		const updatedDbDiscussion = this.discussionDbDriver.updateById(req.params.id, req.body);
 		// 2. Respond with the new discussion
 		res.status(200).send(updatedDbDiscussion);
-	}
+	},
 
 	/**
 	 * @routeType GET
@@ -38,12 +38,12 @@ class DiscussionApiController {
 	 * @routeDescription Get an discussion
 	 * @routeResponse Discussion object
 	 */
-	updateDiscussion(req, res, next) {
+	getDiscussion(req, res, next) {
 		// 1. Insert the user into db
 		const dbDiscussion = this.discussionDbDriver.getById(req.params.id);
 		// 2. Respond with the discussion
 		res.status(200).send(dbDiscussion);
-	}
+	},
 
 	/**
 	 * @routeType DELETE
@@ -58,5 +58,5 @@ class DiscussionApiController {
 		// 2. Respond with true
 		res.status(200).send(true);
 	}
-}
+};
 module.exports = DiscussionApiController;
