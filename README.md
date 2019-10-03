@@ -349,7 +349,7 @@ allApiEndpointsGrouped.forEach((controllerGroup) => {
 	Object.keys(controllerGroup).forEach((httpVerb) => {
 		const httpVerbLowercase = httpVerb.toLowerCase()
 
-		const endpoints = Object.values(httpVerb)
+		const endpoints = Object.values(controllerGroup[httpVerb])
 		endpoints.forEach((endpointDef) => {
 			// This is the same as `app.get(path, (req, res, next) => {})`,
 			// `app.post`, `app.put`, or `app.delete` as above.
