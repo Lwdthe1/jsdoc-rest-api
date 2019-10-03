@@ -397,10 +397,13 @@ Here's some pseudo code for doing exactly that by leveraging the dynamic nature 
 ```
 
 const express = require('express')
+const jsdocRestApi = require('jsdoc-rest-api')
 const app = express()
+
+const PORT = process.env.PORT
 app.set('port', PORT || 3100)
 
-const jsdocRestApi = require('jsdoc-rest-api')
+
 const allApiEndpointsGrouped = jsdocRestApi.generateRoutes({ source: "server/api/\**/*Controller.js" })
 
 // Loop over the controller groups
@@ -438,7 +441,3 @@ We use mocha and chai. Run `npm test` to test the generators.
 ## Contributing
 
 Feel free to open a pull request.
-
-```
-
-```
