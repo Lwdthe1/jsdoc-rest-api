@@ -1,0 +1,5 @@
+server/**/*_test.js --recursive
+shared/**/*_test.js --recursive
+test/**/*_test.js --recursive
+-t 3600000
+--exit
