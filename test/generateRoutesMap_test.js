@@ -10,6 +10,8 @@ describe("#generateRoutes()", function() {
 			{
 				fileName: "ArticleApiController.js",
 				fileAbsolutePath: "/examples/generateRoutesMap/server/api/ArticleApiController.js",
+				fileRootPath:
+					"/Users/lincolndaniel/Documents/programming/jsdoc-rest-api/examples/generateRoutesMap/server/api/ArticleApiController.js",
 				routes: {
 					GET: {
 						GET_ARTICLE: {
@@ -64,6 +66,8 @@ describe("#generateRoutes()", function() {
 			{
 				fileName: "DiscussionApiController.js",
 				fileAbsolutePath: "/examples/generateRoutesMap/server/api/DiscussionApiController.js",
+				fileRootPath:
+					"/Users/lincolndaniel/Documents/programming/jsdoc-rest-api/examples/generateRoutesMap/server/api/DiscussionApiController.js",
 				routes: {
 					GET: {
 						GET_DISCUSSION: {

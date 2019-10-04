@@ -1,6 +1,12 @@
 "use strict";
 
 const DiscussionApiController = {
+	discussionDbDriver: {
+		insert: () => {},
+		getById: () => {},
+		updateById: () => {},
+		deleteById: () => {}
+	},
 	/**
 	 * @apiType POST
 	 * @apiPath /api/i/discussion
