@@ -180,9 +180,9 @@ You can also optionally provide `getControllerInstance()`, a callback that will 
 
 ##### See it in action
 
-Please see the `attachExpressAppEndpoints` and `workingWebServer` example folders for how you can use this method. It will definitely cut down on your development time and the tedium of manually typing boilerplate for each endpoint on your server.
+Please see the `attachExpressAppEndpoints/workingWebServer` example folder for how you can use this method. It will definitely cut down on your development time and the tedium of manually typing boilerplate for each endpoint on your server.
 
-For the `workingWebServer` example, change directory to that folder, run `npm install` then `npm start` and visit the link it prints in the console to see the power of this library in action.
+Change directory to that folder, run `npm install` then `npm start` and visit the link it prints in the console to see the power of this library in action.
 
 ## Why use this and how to make the most of it to automate the setup of your HTTP server for a REST API
 

@@ -6,7 +6,7 @@ class HelloWorld {
 	 */
 	home(req, res, next) {
 		res.send(
-			"Hello, world! <br/><br/> See examples/workingWebServer/server/api/helloWorldApiController.js for the source jsdoc API definitions and to add your own. <br/><br/> Also add some POST, PUT, and DELETE API endpoints and test using a tool like Postman."
+			"Hello, world! <br/><br/> See examples/attachExpressAppEndpoints/workingWebServer/server/api/helloWorldApiController.js for the source jsdoc API definitions and to add your own. <br/><br/> Also add some POST, PUT, and DELETE API endpoints and test using a tool like Postman."
 		);
 	}
 
