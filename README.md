@@ -178,7 +178,11 @@ Call this method when starting your ExpressJs HTTP server in order to automatica
 
 You can also optionally provide `getControllerInstance()`, a callback that will be called whenever an endpoint is requested by a client of your REST API in order to get the correct object on which to call the required handler for the incoming request. If `getControllerInstance` is not provided, we will first check on the controller's prototype for the target handler. If the prototype does not have the handler as a function, we will default to calling the static function. If you would like to check for the static function before the prototype's function, that would be a perfect reason to provide your own `getControllerInstance()` callback; the target `controller` object and `ctrl` key will always be provided so you can run checks to help you decide.
 
-Please see the `attachExpressAppEndpoints` examples folder for how you can use this method. It will definitely cut down on your development time and the tedium of manually typing boilerplate for each endpoint on your server.
+##### See it in action
+
+Please see the `attachExpressAppEndpoints` and `workingWebServer` example folders for how you can use this method. It will definitely cut down on your development time and the tedium of manually typing boilerplate for each endpoint on your server.
+
+For the `workingWebServer` example, change directory to that folder, run `npm install` then `npm start` and visit the link it prints in the console to see the power of this library in action.
 
 ## Why use this and how to make the most of it to automate the setup of your HTTP server for a REST API
 
