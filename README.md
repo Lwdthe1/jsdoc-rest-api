@@ -160,6 +160,8 @@ Using the example output above, let's establish some terminology.
 
 In the output you see there, each element in the array is referred to as a `controller`. A controller is just a module that contains a group of (supposedly) related REST API endpoints, or `routes`. `ArticleApiController` is one controller that has a group of routes related to handling requests for blog articles, and `XyzApiController` is another controller responsible to handling requests for another type of entity in your application.
 
+You can have all your routes in a single controller, but that can get messy. We suggest grouping related routes under a controller and creating many groups as you add more resource types, e.g. users, articles, etc., to you application. You may have a UserApiController for all routes related to users and another for all routes related to articles. Of course, you don't have to call your files "ApiController"; that's just a convention. What we do suggest, though, is to have a consistent suffix for your controller file names to make the logic simple when providing the [glob](https://docs.python.org/3/library/glob.html) for the library to traverse your code looking for your controllers.
+
 ##### ctrl
 
 `ctrl` on each route in a controller's group of `routes` is just a function defined on the `controller` module. A route's `ctrl` is what handles incoming requests to your REST API web server for that route.
