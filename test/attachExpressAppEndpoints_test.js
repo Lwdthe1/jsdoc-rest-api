@@ -17,10 +17,11 @@ describe("#attachExpressAppEndpoints()", function() {
 			};
 			const fakeReq = { params: { id: "prop_id_a" }, body: {} };
 			const fakeRes = { status: () => fakeRes, send: () => {} };
-			const fakeNext = testHelper.spy();
+			const fakeNext = testHelper.spy(err => {
+				console.error(err.stack);
+			});
 
-			const getControllerInstance = testHelper.spy(({ req, controller, controllerFileName }) => {
-				assert.deepEqual(req, fakeReq);
+			const getControllerInstance = testHelper.spy(({ controller, controllerFileName }) => {
 				assert.isTrue(
 					controllerFileName === "ArticleApiController.js" ||
 						controllerFileName === "DiscussionApiController.js"

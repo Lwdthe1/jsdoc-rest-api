@@ -1,12 +1,25 @@
-<table class="badge-examples__ExampleTable-sc-1m4e1ck-0 hgKsAa"><tbody><tr><td><span display="inline" height="20px" class="common__BadgeWrapper-v13icv-3 GSKuB"><img alt="GitHub issues badge" src="https://img.shields.io/github/issues/Lwdthe1/jsdoc-rest-api"></span></td></tr><tr><td><span display="inline" height="20px" class="common__BadgeWrapper-v13icv-3 GSKuB"><img alt="GitHub forks badge" src="https://img.shields.io/github/forks/Lwdthe1/jsdoc-rest-api"></span></td></tr><tr><td><span display="inline" height="20px" class="common__BadgeWrapper-v13icv-3 GSKuB"><img alt="GitHub stars badge" src="https://img.shields.io/github/stars/Lwdthe1/jsdoc-rest-api"></span></td></tr><tr><td><span display="inline" height="20px" class="common__BadgeWrapper-v13icv-3 GSKuB"><img alt="GitHub license badge" src="https://img.shields.io/github/license/Lwdthe1/jsdoc-rest-api"></span></td></tr><tr><td><span display="inline" height="20px" class="common__BadgeWrapper-v13icv-3 GSKuB"><img alt="Twitter badge" src="https://img.shields.io/twitter/url?url=https%3A%2F%2Fgithub.com%2FLwdthe1%2Fjsdoc-rest-api"></span></td></tr></tbody></table>
+This library can generate a map of your REST API endpoints from your JsDoc and use that map to automatically hook up your endpoints to your ExpressJs app when starting your REST API web server.
 
-This packagae is a helper that generates a map of your rest api from your JsDoc.
+<div class="badge-examples__ExampleTable-sc-1m4e1ck-0 hgKsAa"><span style="height:20px; display:inline; margin-right:20px" class="common__BadgeWrapper-v13icv-3 GSKuB"><img alt="GitHub issues badge" src="https://img.shields.io/github/issues/Lwdthe1/jsdoc-rest-api"></span><span style="height:20px; display:inline; margin-right:20px" class="common__BadgeWrapper-v13icv-3 GSKuB"><img alt="GitHub forks badge" src="https://img.shields.io/github/forks/Lwdthe1/jsdoc-rest-api"></span><span style="height:20px; display:inline; margin-right:20px" class="common__BadgeWrapper-v13icv-3 GSKuB"><img alt="GitHub stars badge" src="https://img.shields.io/github/stars/Lwdthe1/jsdoc-rest-api"></span><span style="height:20px; display:inline; margin-right:20px" class="common__BadgeWrapper-v13icv-3 GSKuB"><img alt="GitHub license badge" src="https://img.shields.io/github/license/Lwdthe1/jsdoc-rest-api"></span><span style="height:20px; display:inline; margin-right:20px" class="common__BadgeWrapper-v13icv-3 GSKuB"><img alt="Twitter badge" src="https://img.shields.io/twitter/url?url=https%3A%2F%2Fgithub.com%2FLwdthe1%2Fjsdoc-rest-api"></span></tbody></table>
 
 ## Install
 
 `npm install --save jsdoc-rest-api`
 
 ## Usage
+
+### Methods
+
+There are two functions you can make use of, and one of them relies on the other:
+
+1. `generateRoutes()`
+2. `attachExpressAppEndpoints()`
+
+The first one, `generateRoutes()`, will simply return a mapping of all your defined REST API endpoints from your JsDoc by traversing your code.
+
+The second one, `attachExpressAppEndpoints()`, allows you to easily attach all of your defined REST API endpoints from your JsDoc to your ExpressJs app without ever having to write `app.get(...)`, `app.post(...)` (etc.) for each endpoint again.
+
+### Requirements
 
 You must have files with the appropriate JsDoc annonations on functions. Example:
 
@@ -31,7 +44,66 @@ class ArticleApiController {
 module.exports = ArticleApiController
 ```
 
-Then do the following to get an array of maps that group all endpoints of a controller file together:
+## Supported annonations
+
+<table>
+	<thead>
+		<tr>
+			<th>Tag</th>
+			<th>Description</th>
+			<th>Supported values</th>
+			<th>Optionality</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td style="color: #1abc9c">@apiType</td>
+			<td>The HTTP verb for the api route</td>
+			<td>GET, POST, PUT, or DELETE</td>
+			<td>Required</td>
+		</tr>
+		<tr>
+			<td style="color: #1abc9c">@apiPath</td>
+			<td>
+				The HTTP endpoint for the api route. 
+			</td>
+			<td>String</td>
+			<td>Required</td>
+		</tr>
+		<tr>
+			<td>@apiBody</td>
+			<td>The HTTP expected body data for the api route.</td>
+			<td>String|JSON</td>
+			<td>Optional</td>
+		</tr>
+		<tr>
+			<td>@apiKey</td>
+			<td>A key by which this route may be identified by consumers of your api.</td>
+			<td>String</td>
+			<td>Optional</td>
+		</tr>
+		<tr>
+			<td>@apiDescription</td>
+			<td>A description of this route for consumers of your api.</td>
+			<td>String</td>
+			<td>Optional</td>
+		</tr>
+		<tr>
+			<td>@apiResponse</td>
+			<td>The type of the response that the api client should expect for this route.</td>
+			<td>String</td>
+			<td>Optional</td>
+		</tr>
+	</tbody>
+</table>
+
+### Use case
+
+With your jsDoc annonations in place for your REST API handlers across your codebase, you're ready to use this library to hook up your REST API web server. Let's look at how you can make use of the methods above.
+
+#### #generateRoutes()
+
+To get an array of maps that group all endpoints of a controller file together, simply do the following:
 
 ```
 const jsdocRestApi = require('jsdoc-rest-api')
@@ -64,61 +136,47 @@ Expected result:
 			},
 			DELETE: { /** ... */ },
 		},
+	},
+	// And other controllers that are found matching the source search
+	{
+		fileName: "XyzApiController.js",
+		fileAbsolutePath: "/server/api/XyzApiController.js",
+		routes: {
+			GET: { /** ... */ },
+			POST: { /** ... */ },
+			PUT: { /** ... */ },
+			DELETE: { /** ... */ },
+		},
 	}
 ]
 */
 ```
 
-## Supported annonations
+#### Some terminology
 
-<table>
-	<thead>
-		<tr>
-			<th>Tag</th>
-			<th>Description</th>
-			<th>Supported values</th>
-			<th>Optionality</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>@apiType</td>
-			<td>The HTTP verb for the api route</td>
-			<td>`GET`, `POST`, `PUT`, `DELETE`</td>
-			<td>Required</td>
-		</tr>
-		<tr>
-			<td>@apiPath</td>
-			<td>The HTTP endpoint for the api route.</td>
-			<td>`String`</td>
-			<td>Required</td>
-		</tr>
-		<tr>
-			<td>@apiBody</td>
-			<td>The HTTP expected body data for the api route.</td>
-			<td>`String|JSON`</td>
-			<td>Optional</td>
-		</tr>
-		<tr>
-			<td>@apiKey</td>
-			<td>A key by which this route may be identified by consumers of your api.</td>
-			<td>`String`</td>
-			<td>Optional</td>
-		</tr>
-		<tr>
-			<td>@apiDescription</td>
-			<td>A description of this route for consumers of your api.</td>
-			<td>`String`</td>
-			<td>Optional</td>
-		</tr>
-		<tr>
-			<td>@apiResponse</td>
-			<td>The type of the response that the api client should expect for this route.</td>
-			<td>`String`</td>
-			<td>Optional</td>
-		</tr>
-	</tbody>
-</table>
+Using the example output above, let's establish some terminology.
+
+##### controller
+
+In the output you see there, each element in the array is referred to as a `controller`. A controller is just a module that contains a group of (supposedly) related REST API endpoints, or `routes`. `ArticleApiController` is one controller that has a group of routes related to handling requests for blog articles, and `XyzApiController` is another controller responsible to handling requests for another type of entity in your application.
+
+##### ctrl
+
+`ctrl` on each route in a controller's group of `routes` is just a function defined on the `controller` module. A route's `ctrl` is what handles incoming requests to your REST API web server for that route.
+
+So if a `PUT` request comes into your server for `/api/i/article/article1`, it would be handled by an instance of your `ArticleApiController` controller with a call to `#updateArticle()`, which is the defined `ctrl` for that route.
+
+#### #attachExpressAppEndpoints()
+
+Getting an array of mappings for your REST API endpoints is cool and all, but it gets even better. If you don't want to worry about manually typing `app.get()`, `app.post()`, `app.put()`, and `app.delete()` again for each endpoint your server can handle, this method is the one for you.
+
+Call this method when starting your ExpressJs HTTP server in order to automatically attach all of your REST API endpoints.
+
+`attachExpressAppEndpoints()` takes a config object with `app`, your ExpressJs app instance, and `source`, where to look for your REST API jsDoc definitions in your codebase.
+
+You can also optionally provide `getControllerInstance()`, a callback that will be called whenever an endpoint is requested by a client of your REST API in order to get the correct object on which to call the required handler for the incoming request. If `getControllerInstance` is not provided, we will first check on the controller's prototype for the target handler. If the prototype does not have the handler as a function, we will default to calling the static function. If you would like to check for the static function before the prototype's function, that would be a perfect reason to provide your own `getControllerInstance()` callback; the target `controller` object and `ctrl` key will always be provided so you can run checks to help you decide.
+
+Please see the `attachExpressAppEndpoints` examples folder for how you can use this method. It will definitely cut down on your development time and the tedium of manually typing boilerplate for each endpoint on your server.
 
 ## Why use this and how to make the most of it to automate the setup of your HTTP server for a REST API
 
@@ -388,49 +446,9 @@ const articleApiEndpointsGrouped = allApiEndpointsGrouped[0].routes // Assuming 
 
 ```
 
-Of course, that's a simplified example of what you can do with this library. In my own servers, I have automated the creation of my entire HTTP server using this library because it tells me which endpoints are supported across my entire codebase, which controller classes handle those endpoints, and for each endpoint, which function to call on a controller to handle the request.
+Of course, that's a simplified example of what you can do with this library. In my own servers, I have automated the creation of my entire HTTP server using this library because it tells me which endpoints are supported across my entire codebase, which controller classes handle those endpoints, and, for each endpoint, which function to call on a controller to handle the request.
 
-You can do the same pretty easily because the library tells you the absolute path to each api controller in the groups it returns; see the `fileAbsolutePath` field in each object. You can use that to `require(...)` the controller file and call the defined function for the endpoint, as specified in the `ctrl` field of each route definition, on that controller for the incoming HTTP request.
-
-Here's some pseudo code for doing exactly that by leveraging the dynamic nature of Javascript syntax.
-
-```
-
-const express = require('express')
-const jsdocRestApi = require('jsdoc-rest-api')
-const app = express()
-
-const PORT = process.env.PORT
-app.set('port', PORT || 3100)
-
-
-const allApiEndpointsGrouped = jsdocRestApi.generateRoutes({ source: "server/api/\**/*Controller.js" })
-
-// Loop over the controller groups
-allApiEndpointsGrouped.forEach((controllerGroup) => {
-// Loop over the HTTP verb groups
-Object.keys(controllerGroup).forEach((httpVerb) => {
-const httpVerbLowercase = httpVerb.toLowerCase()
-
-    	const endpoints = Object.values(controllerGroup[httpVerb])
-    	endpoints.forEach((endpointDef) => {
-    		// This is the same as `app.get(path, (req, res, next) => {})`,
-    		// `app.post`, `app.put`, or `app.delete` as above.
-    		app[httpVerbLowercase](endpointDef.path, (req, res, next) => {
-    			// You may need to do some extra path manipulation
-    			// to get the absolute path to work in the `require()` call
-    			// depending on where your root file is located in your file structure.
-    			require(controllerGroup.fileAbsolutePath)[endpointDef.ctrl](req, res, next)
-    		})
-    	})
-    })
-
-})
-
-// Listen for incoming HTTP requests.
-app.listen(PORT)
-
-```
+You can do the same pretty easily by using the `attachExpressAppEndpoints()` method in this library.
 
 With that, your server is ready to handle all incoming requests for any API endpoints defined in an ApiController file. Of course, you don't have to call your files "ApiController"; that's just what I've chosen to do. Whatever, you call it, make sure you provide the correct glob as the `source` config field when calling the `jsdocRestApi.generateRoutes()` function as illustrated above.
 
