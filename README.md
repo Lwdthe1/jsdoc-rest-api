@@ -452,7 +452,7 @@ Of course, that's a simplified example of what you can do with this library. In 
 
 You can do the same pretty easily by using the `attachExpressAppEndpoints()` method in this library.
 
-With that, your server is ready to handle all incoming requests for any API endpoints defined in an ApiController file. Of course, you don't have to call your files "ApiController"; that's just what I've chosen to do. Whatever, you call it, make sure you provide the correct glob as the `source` config field when calling the `jsdocRestApi.generateRoutes()` function as illustrated above.
+With that, your server is ready to handle all incoming requests for any API endpoints defined in an ApiController file. Of course, you don't have to call your files "ApiController"; that's just what I've chosen to do. Whatever, you call it, make sure you provide the correct glob as the `source` config field when calling the `jsdocRestApi.generateRoutes()` or `jsdocRestApi.attachExpressAppEndpoints()` functions as illustrated above.
 
 ## Tests
 
