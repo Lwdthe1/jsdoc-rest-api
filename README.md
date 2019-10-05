@@ -349,8 +349,10 @@ const jsdocRestApi = require('jsdoc-rest-api')
 
 const articleApiController = new require('./ArticleApiController')
 
-const allApiEndpointsGrouped = jsdocRestApi.generateRoutes({ source: "server/api/\**/*Controller.js" })
-const articleApiEndpointsGrouped = allApiEndpointsGrouped[0].routes // Assuming that ArticleApiController is first
+const allApiEndpointsGrouped = jsdocRestApi.generateRoutes({ source: "server/api/**/*Controller.js" })
+
+// Assuming that ArticleApiController is first
+const articleApiEndpointsGrouped = allApiEndpointsGrouped[0].routes
 const getEndpoints = Object.keys(articleApiEndpointsGrouped.GET)
 const postEndpoints = Object.keys(articleApiEndpointsGrouped.POST)
 const putEndpoints = Object.keys(articleApiEndpointsGrouped.PUT)
@@ -363,14 +365,14 @@ getEndpoints.forEach((endpointDef) => {
 })
 
 postEndpoints.forEach((endpointDef) => {
-app.post(endpointDef.path, (req, res, next) => {
-articleApiController[endpointDef.ctrl](req, res, next)
-})
+	app.post(endpointDef.path, (req, res, next) => {
+		articleApiController[endpointDef.ctrl](req, res, next)
+	})
 })
 
 putEndpoints.forEach((endpointDef) => {
 	app.put(endpointDef.path, (req, res, next) => {
-	articleApiController[endpointDef.ctrl](req, res, next)
+		articleApiController[endpointDef.ctrl](req, res, next)
 	})
 })
 
@@ -386,7 +388,7 @@ The key line here is:
 
 ```
 
-const allApiEndpoints = jsdocRestApi.generateRoutes({ source: "server/api/\**/*Controller.js" })
+const allApiEndpoints = jsdocRestApi.generateRoutes({ source: "server/api/**/*Controller.js" })
 
 ```
 
