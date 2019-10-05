@@ -24,6 +24,7 @@ This library can generate a map of your REST API endpoints from your JsDoc and u
 `npm install --save jsdoc-rest-api`
 
 ## Usage
+![carbon](https://user-images.githubusercontent.com/5778798/66249930-f6945800-e6ef-11e9-8ec2-497a3744335d.png)
 
 ### Methods
 
