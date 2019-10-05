@@ -2,6 +2,23 @@ This library can generate a map of your REST API endpoints from your JsDoc and u
 
 <div class="badge-examples__ExampleTable-sc-1m4e1ck-0 hgKsAa"><span style="height:20px; display:inline; margin-right:20px" class="common__BadgeWrapper-v13icv-3 GSKuB"><img alt="GitHub issues badge" src="https://img.shields.io/github/issues/Lwdthe1/jsdoc-rest-api"></span><span style="height:20px; display:inline; margin-right:20px" class="common__BadgeWrapper-v13icv-3 GSKuB"><img alt="GitHub forks badge" src="https://img.shields.io/github/forks/Lwdthe1/jsdoc-rest-api"></span><span style="height:20px; display:inline; margin-right:20px" class="common__BadgeWrapper-v13icv-3 GSKuB"><img alt="GitHub stars badge" src="https://img.shields.io/github/stars/Lwdthe1/jsdoc-rest-api"></span><span style="height:20px; display:inline; margin-right:20px" class="common__BadgeWrapper-v13icv-3 GSKuB"><img alt="GitHub license badge" src="https://img.shields.io/github/license/Lwdthe1/jsdoc-rest-api"></span><span style="height:20px; display:inline; margin-right:20px" class="common__BadgeWrapper-v13icv-3 GSKuB"><img alt="Twitter badge" src="https://img.shields.io/twitter/url?url=https%3A%2F%2Fgithub.com%2FLwdthe1%2Fjsdoc-rest-api"></span></tbody></table>
 
+- [Install](#install)
+- [Usage](#usage)
+  - [Methods](#methods)
+  - [Requirements](#requirements)
+- [Supported annonations](#supported-annonations)
+  - [Use case](#use-case)
+    - [#generateRoutes()](#-generateroutes--)
+    - [Some terminology](#some-terminology)
+      - [controller](#controller)
+      - [ctrl](#ctrl)
+    - [#attachExpressAppEndpoints()](#-attachexpressappendpoints--)
+      - [See it in action](#see-it-in-action)
+- [Why use this and how to make the most of it to automate the setup of your HTTP server for a REST API](#why-use-this-and-how-to-make-the-most-of-it-to-automate-the-setup-of-your-http-server-for-a-rest-api)
+  - [Enter `jsdoc-rest-api`!](#enter--jsdoc-rest-api--)
+- [Tests](#tests)
+- [Contributing](#contributing)
+
 ## Install
 
 `npm install --save jsdoc-rest-api`
