@@ -21,24 +21,29 @@ describe("#attachExpressAppEndpoints()", function() {
 				console.error(err.stack);
 			});
 
-			const getControllerInstance = testHelper.spy(({ controller, controllerFileName }) => {
-				assert.isTrue(
-					controllerFileName === "ArticleApiController.js" ||
-						controllerFileName === "DiscussionApiController.js"
-				);
+			const getControllerInstance = testHelper.spy(
+				({ controller, controllerFileName, req, res }) => {
+					assert.isTrue(
+						controllerFileName === "ArticleApiController.js" ||
+							controllerFileName === "DiscussionApiController.js"
+					);
 
-				assert(controller);
-				assert.deepEqual(
-					controller,
-					require(`../examples/generateRoutesMap/server/api/${controllerFileName}`)
-				);
+					assert(controller);
+					assert.deepEqual(
+						controller,
+						require(`../examples/generateRoutesMap/server/api/${controllerFileName}`)
+					);
 
-				try {
-					return new controller();
-				} catch (err) {
-					return controller;
+					assert.deepEqual(req, fakeReq);
+					assert.deepEqual(res, fakeRes);
+
+					try {
+						return new controller();
+					} catch (err) {
+						return controller;
+					}
 				}
-			});
+			);
 
 			attachExpressAppEndpoints({
 				source: "examples/generateRoutesMap/server/api/**/*Controller.js",
