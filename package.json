@@ -1,6 +1,6 @@
 {
 	"name": "jsdoc-rest-api",
-	"version": "3.6.1",
+	"version": "3.6.2",
 	"description": "A utility that generates a rest api from your JsDoc annotations.",
 	"main": "index.js",
 	"repository": {

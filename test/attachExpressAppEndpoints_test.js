@@ -60,7 +60,11 @@ describe("#attachExpressAppEndpoints()", function() {
 
 					return [args[0], true];
 				}),
-				[["/api/i/article/:id", true], ["/api/i/discussion/:id", true]]
+				[
+					["/api/i/article/:id", true],
+					["/api/i/discussion/:id", true],
+					["/api/i/discussion/:id/v2", true]
+				]
 			);
 
 			const lastGetCallArgsCb = expressApp.get.lastCall.args[1];

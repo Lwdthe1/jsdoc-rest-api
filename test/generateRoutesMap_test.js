@@ -78,6 +78,15 @@ describe("#generateRoutes()", function() {
 							respsonseType: "Discussion object",
 							ctrl: "getDiscussion",
 							ctrlClass: "DiscussionApiController"
+						},
+						GET_DISCUSSION_V2: {
+							type: "GET",
+							path: "/api/i/discussion/:id/v2",
+							ctrl: "getDiscussionV2",
+							ctrlClass: "DiscussionApiController",
+							key: undefined,
+							description: undefined,
+							respsonseType: undefined
 						}
 					},
 					POST: {
@@ -91,6 +100,15 @@ describe("#generateRoutes()", function() {
 							bodyObj: { title: "String", subtitle: "String", content: "String" },
 							ctrl: "createDiscussion",
 							ctrlClass: "DiscussionApiController"
+						},
+						CREATE_DISCUSSION_V2: {
+							type: "POST",
+							path: "/api/i/discussion/v2",
+							ctrl: "createDiscussionV2",
+							ctrlClass: "DiscussionApiController",
+							key: undefined,
+							description: undefined,
+							respsonseType: undefined
 						}
 					},
 					PUT: {
@@ -104,6 +122,15 @@ describe("#generateRoutes()", function() {
 							bodyObj: { title: "String", subtitle: "String", content: "String" },
 							ctrl: "updateDiscussion",
 							ctrlClass: "DiscussionApiController"
+						},
+						UPDATE_DISCUSSION_V2: {
+							type: "PUT",
+							path: "/api/i/discussion/:id/v2",
+							ctrl: "updateDiscussionV2",
+							ctrlClass: "DiscussionApiController",
+							key: undefined,
+							description: undefined,
+							respsonseType: undefined
 						}
 					},
 					DELETE: {
@@ -115,6 +142,15 @@ describe("#generateRoutes()", function() {
 							respsonseType: "Boolean",
 							ctrl: "deleteDiscussion",
 							ctrlClass: "DiscussionApiController"
+						},
+						DELETE_DISCUSSION_V2: {
+							type: "DELETE",
+							path: "/api/i/discussion/:id/v2",
+							ctrl: "deleteDiscussionV2",
+							ctrlClass: "DiscussionApiController",
+							key: undefined,
+							description: undefined,
+							respsonseType: undefined
 						}
 					}
 				}

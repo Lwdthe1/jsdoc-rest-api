@@ -63,6 +63,46 @@ const DiscussionApiController = {
 		this.discussionDbDriver.deleteById(req.params.id);
 		// 2. Respond with true
 		res.status(200).send(true);
+	},
+
+	/**
+	 * @apiPath POST /api/i/discussion/v2
+	 */
+	createDiscussionV2(req, res, next) {
+		// 1. Insert the new discussion into db
+		const newDbDiscussion = this.discussionDbDriver.insert(req.body);
+		// 2. Respond with the new discussion
+		res.status(201).send(newDbDiscussion);
+	},
+
+	/**
+	 * @apiPath PUT /api/i/discussion/:id/v2
+	 */
+	updateDiscussionV2(req, res, next) {
+		// 1. Update the discussion in the db
+		const updatedDbDiscussion = this.discussionDbDriver.updateById(req.params.id, req.body);
+		// 2. Respond with the new discussion
+		res.status(200).send(updatedDbDiscussion);
+	},
+
+	/**
+	 * @apiPath /api/i/discussion/:id/v2
+	 */
+	getDiscussionV2(req, res, next) {
+		// 1. Insert the user into db
+		const dbDiscussion = this.discussionDbDriver.getById(req.params.id);
+		// 2. Respond with the discussion
+		res.status(200).send(dbDiscussion);
+	},
+
+	/**
+	 * @apiPath DELETE /api/i/discussion/:id/v2
+	 */
+	deleteDiscussionV2(req, res, next) {
+		// 1. Delete the discussion by its id
+		this.discussionDbDriver.deleteById(req.params.id);
+		// 2. Respond with true
+		res.status(200).send(true);
 	}
 };
 module.exports = DiscussionApiController;
