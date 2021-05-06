@@ -2,6 +2,8 @@ This library can generate a map of your REST API endpoints from your JsDoc and u
 
 <div class="badge-examples__ExampleTable-sc-1m4e1ck-0 hgKsAa"><span style="height:20px; display:inline; margin-right:20px" class="common__BadgeWrapper-v13icv-3 GSKuB"><img alt="GitHub issues badge" src="https://img.shields.io/github/issues/Lwdthe1/jsdoc-rest-api"></span><span style="height:20px; display:inline; margin-right:20px" class="common__BadgeWrapper-v13icv-3 GSKuB"><img alt="GitHub forks badge" src="https://img.shields.io/github/forks/Lwdthe1/jsdoc-rest-api"></span><span style="height:20px; display:inline; margin-right:20px" class="common__BadgeWrapper-v13icv-3 GSKuB"><img alt="GitHub stars badge" src="https://img.shields.io/github/stars/Lwdthe1/jsdoc-rest-api"></span><span style="height:20px; display:inline; margin-right:20px" class="common__BadgeWrapper-v13icv-3 GSKuB"><img alt="GitHub license badge" src="https://img.shields.io/github/license/Lwdthe1/jsdoc-rest-api"></span><span style="height:20px; display:inline; margin-right:20px" class="common__BadgeWrapper-v13icv-3 GSKuB"><img alt="Twitter badge" src="https://img.shields.io/twitter/url?url=https%3A%2F%2Fgithub.com%2FLwdthe1%2Fjsdoc-rest-api"></span></tbody></table>
 
+
+
 - [Install](#install)
 - [Usage](#usage)
   - [Methods](#methods)
@@ -24,7 +26,21 @@ This library can generate a map of your REST API endpoints from your JsDoc and u
 `npm install --save jsdoc-rest-api`
 
 ## Usage
-![carbon](https://user-images.githubusercontent.com/5778798/66249930-f6945800-e6ef-11e9-8ec2-497a3744335d.png)
+```javascript
+const expressapp = require('express')()
+const jsdocRestApi = require('jsdoc-rest-api')
+const PORT = process.env.PORT || 3100
+
+// Attach all our supported HTTP endpoint controllers
+jsdocRestApi.attachExpressAppEndpoints({
+  app: expressapp,
+  source: 'server/api/**/*Controller.js'
+})
+
+app.listen(PORT)
+console.log(`REST API server is running at http:localhost:${PORT}`)
+```
+
 
 ### Methods
 
