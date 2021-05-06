@@ -27,17 +27,17 @@ This library can generate a map of your REST API endpoints from your JsDoc and u
 
 ## Usage
 ```javascript
-const expressapp = require('express')()
+const expressApp = require('express')()
 const jsdocRestApi = require('jsdoc-rest-api')
 const PORT = process.env.PORT || 3100
 
 // Attach all our supported HTTP endpoint controllers
 jsdocRestApi.attachExpressAppEndpoints({
-  app: expressapp,
+  app: expressApp,
   source: 'server/api/**/*Controller.js'
 })
 
-app.listen(PORT)
+expressApp.listen(PORT)
 console.log(`REST API server is running at http:localhost:${PORT}`)
 ```
 
