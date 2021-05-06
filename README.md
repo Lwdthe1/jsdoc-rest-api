@@ -37,6 +37,10 @@ jsdocRestApi.attachExpressAppEndpoints({
   source: 'server/api/**/*Controller.js'
 })
 
+expressApp.all('*', (req, res) => {
+	res.status(404).send('Not found');
+})
+
 expressApp.listen(PORT)
 console.log(`REST API server is running at http:localhost:${PORT}`)
 ```
