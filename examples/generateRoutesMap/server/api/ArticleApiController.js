@@ -4,7 +4,7 @@ class ArticleApiController {
 	/**
 	 * @apiType POST
 	 * @apiPath /api/i/article
-	 * @apiBody {"title": "String", "subtitle":"String", "content": "String"}
+	 * @apiBody {"title": "String", subtitle:"String", "content": "String"}
 	 * @apiKey Create Article
 	 * @apiDescription Create a new article
 	 * @apiResponse Article object

@@ -31,7 +31,7 @@ describe("#generateRoutes()", function() {
 							key: "Create Article",
 							description: "Create a new article",
 							respsonseType: "Article object",
-							body: '{"title": "String", "subtitle":"String", "content": "String"}',
+							body: '{"title": "String", subtitle:"String", "content": "String"}',
 							bodyObj: { title: "String", subtitle: "String", content: "String" },
 							ctrl: "createArticle",
 							ctrlClass: "ArticleApiController"
@@ -157,9 +157,33 @@ describe("#generateRoutes()", function() {
 			}
 		];
 
-		assert.deepEqual(
-			generateRoutes({ source: "examples/generateRoutesMap/server/api/**/*Controller.js" }),
-			expectedResult
-		);
+		const result = generateRoutes({
+			source: "examples/generateRoutesMap/server/api/**/*Controller.js"
+		});
+
+		{
+			const getComparableObj = result => {
+				return JSON.parse(JSON.stringify(result)).map(r => {
+					delete r.fileRootPath;
+
+					return r;
+				});
+			};
+			assert.deepEqual(getComparableObj(result), getComparableObj(expectedResult));
+		}
+		{
+			const getComparablePath = fileRootPath => {
+				const parts = fileRootPath.split("/examples");
+				parts.shift();
+				return parts.join("");
+			};
+
+			result.forEach((file, i) => {
+				assert.equal(
+					getComparablePath(file.fileRootPath),
+					getComparablePath(expectedResult[i].fileRootPath)
+				);
+			});
+		}
 	});
 });
